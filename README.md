@@ -23,7 +23,9 @@
 |------|------|
 | [intersight_ippool_pool.tenant10_management_1356](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/ippool_pool) | resource |
 | [intersight_ntp_policy.rtp9_dmz_ntp](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/ntp_policy) | resource |
+| [intersight_softwarerepository_operating_system_file.os](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/softwarerepository_operating_system_file) | resource |
 | [intersight_organization_organization.common_org](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/organization_organization) | data source |
+| [intersight_softwarerepository_catalog.common_user_catalog](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/softwarerepository_catalog) | data source |
 
 ## Inputs
 
@@ -33,6 +35,4 @@
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_common_org_moid"></a> [common\_org\_moid](#output\_common\_org\_moid) | n/a |
+No outputs.
