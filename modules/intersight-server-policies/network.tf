@@ -25,6 +25,7 @@ resource "intersight_fabric_eth_network_group_policy" "tenant10_native" {
 resource "intersight_vnic_lan_connectivity_policy" "ue_two_nics" {
   name            = "ue-lan-connectivity"
   description     = "demo vnic lan connectivity policy"
+  placement_mode  = "auto"
   target_platform = "UnifiedEdgeServer"
 
   organization {
