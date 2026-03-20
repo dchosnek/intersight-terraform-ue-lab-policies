@@ -6,6 +6,7 @@ resource "intersight_kvm_policy" "kvm1" {
   remote_port               = 2069
   enable_video_encryption   = true
   enable_local_server_video = true
+  tunneled_kvm_enabled      = true
 
   organization {
     object_type = "organization.Organization"
@@ -22,8 +23,8 @@ resource "intersight_kvm_policy" "kvm1" {
 }
 
 resource "intersight_storage_storage_policy" "m2_raid" {
-  name                     = "ue-m2-raid"
-  description              = "M2 RAID for Unified Edge"
+  name        = "ue-m2-raid"
+  description = "M2 RAID for Unified Edge"
 
   m2_virtual_drive {
     controller_slot = "MSTOR-RAID-1"
