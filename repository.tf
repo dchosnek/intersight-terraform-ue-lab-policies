@@ -18,6 +18,18 @@ locals {
       version = "Windows Server 2025"
       link    = "http://10.135.5.2/os/en-us_windows_server_2025_updated_july_2025_x64_dvd_a1f0681d.iso"
     },
+    {
+      name    = "Windows 2022 July 2022 update"
+      vendor  = "Microsoft"
+      version = "Windows Server 2022"
+      link    = "http://10.135.5.2/os/en-us_windows_server_2022_updated_july_2025_x64_dvd_f3e39b78.iso"
+    },
+    {
+      name    = "ESXi 9"
+      vendor  = "VMware"
+      version = "ESXi 9.0"
+      link    = "http://10.135.5.2/os/ESXi-9.0.0-24649004-standard-Custom-20250522-1122.iso"
+    },
   ]
 }
 
