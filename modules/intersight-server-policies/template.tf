@@ -18,10 +18,10 @@ locals {
       moid        = intersight_compute_scrub_policy.bios_scrub.moid
       object_type = "compute.ScrubPolicy"
     },
-    {
-      moid        = intersight_kvm_policy.kvm1.moid
-      object_type = "kvm.Policy"
-    },
+    # {
+    #   moid        = intersight_kvm_policy.kvm1.moid
+    #   object_type = "kvm.Policy"
+    # },
     {
       moid        = intersight_power_policy.restore_last_state.moid
       object_type = "power.Policy"
