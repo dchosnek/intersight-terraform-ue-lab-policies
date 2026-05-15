@@ -1,4 +1,4 @@
-resource "intersight_kvm_policy" "kvm1" {
+resource "intersight_kvm_policy" "tunneled_kvm" {
   name                      = "ue-tunneled-kvm-enabled"
   description               = "Enable Tunneled vKVM"
   enabled                   = true
