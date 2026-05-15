@@ -19,7 +19,7 @@ locals {
       object_type = "compute.ScrubPolicy"
     },
     # {
-    #   moid        = intersight_kvm_policy.kvm1.moid
+    #   moid        = intersight_kvm_policy.tunneled_kvm.moid
     #   object_type = "kvm.Policy"
     # },
     {
@@ -37,6 +37,14 @@ locals {
     {
       moid        = intersight_vnic_lan_connectivity_policy.ue_two_nics.moid
       object_type = "vnic.LanConnectivityPolicy"
+    },
+    {
+      moid        = intersight_bios_policy.ue_bios_serial_redirect.moid
+      object_type = "bios.Policy"
+    },
+    {
+      moid        = intersight_sol_policy.ue_enable_sol.moid
+      object_type = "sol.Policy"
     },
   ]
 }
