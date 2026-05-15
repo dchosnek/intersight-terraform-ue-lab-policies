@@ -1,6 +1,7 @@
 resource "intersight_ippool_pool" "tenant10_management_1356" {
-  name        = "tenant10-vlan-1356"
-  description = "IP pool for Tenant 10 on VLAN 1356"
+  name             = "tenant10-vlan-1356"
+  description      = "IP pool for Tenant 10 on VLAN 1356"
+  assignment_order = "sequential" # the only supported value
 
   ip_v4_config {
     gateway     = "10.135.6.254"
@@ -23,6 +24,18 @@ resource "intersight_ippool_pool" "tenant10_management_1356" {
   ip_v4_blocks {
     from = "10.135.6.125"
     to   = "10.135.6.132"
+  }
+  ip_v4_blocks {
+    from = "10.135.6.133"
+    to   = "10.135.6.140"
+  }
+  ip_v4_blocks {
+    from = "10.135.6.141"
+    to   = "10.135.6.148"
+  }
+  ip_v4_blocks {
+    from = "10.135.6.149"
+    to   = "10.135.6.156"
   }
 
   organization {
