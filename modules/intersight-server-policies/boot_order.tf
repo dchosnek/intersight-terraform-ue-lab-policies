@@ -1,4 +1,10 @@
 resource "intersight_boot_precision_policy" "ue_boot_order" {
+  // Intersight normalizes boot-policy tags by adding system metadata, so
+  // ignore tag drift here to avoid no-op changes on every apply.
+  lifecycle {
+    ignore_changes = [tags]
+  }
+
   name                     = "ue-boot-order"
   description              = "Unified Edge boot order without secure boot"
   configured_boot_mode     = "Uefi"

@@ -3,7 +3,7 @@ locals {
     {
       name    = "Ubuntu 24.04.4"
       vendor  = "Ubuntu"
-      version = "Ubuntu Server 24.04.3 LTS"
+      version = "Ubuntu Server 24.04.4 LTS"
       link    = "http://10.135.5.2/os/ubuntu-24.04.4-live-server-amd64.iso"
     },
     {
@@ -46,6 +46,12 @@ resource "intersight_softwarerepository_operating_system_file" "os" {
     for os in local.os : os.name => os
   }
 
+  // Intersight adds system-managed tag metadata to imported OS entries, so
+  // ignore tag drift here to keep repeated applies idempotent.
+  lifecycle {
+    ignore_changes = [tags]
+  }
+
   name        = each.value.name
   description = local.description
   vendor      = each.value.vendor
@@ -61,6 +67,43 @@ resource "intersight_softwarerepository_operating_system_file" "os" {
     additional_properties = jsonencode({
       IsPasswordSet = false
       LocationLink  = each.value.link
+      Username      = ""
+    })
+    object_type = "softwarerepository.HttpServer"
+  }
+
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
+}
+
+resource "intersight_firmware_server_configuration_utility_distributable" "scu" {
+  // Intersight adds system-managed tag metadata to imported repository
+  // entries, so ignore tag drift here to keep repeated applies idempotent.
+  lifecycle {
+    ignore_changes = [tags]
+  }
+
+  name        = "SCU 7.1.7.260100"
+  description = local.description
+  vendor      = "Cisco"
+  nr_version  = "SCU 7.1.7.260100"
+  // Scope the SCU import to the Unified Edge compute model this repo targets.
+  supported_models = ["UCSXE-130C-M8"]
+
+  catalog {
+    moid        = data.intersight_softwarerepository_catalog.common_user_catalog.results[0].moid
+    object_type = "softwarerepository.Catalog"
+  }
+
+  nr_source {
+    additional_properties = jsonencode({
+      IsPasswordSet = false
+      LocationLink  = "http://10.135.5.2/scu/ucsxe-scu-7.1.7.260100.iso"
       Username      = ""
     })
     object_type = "softwarerepository.HttpServer"
