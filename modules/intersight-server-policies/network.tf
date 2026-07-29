@@ -1,10 +1,10 @@
 // This VLAN group is shared by both server-facing vNICs.
 resource "intersight_fabric_eth_network_group_policy" "tenant10_native" {
-  name        = "tenant-10-server-vlans"
-  description = "native VLAN for server"
+  name        = "tenant10-server-vlans"
+  description = "tenant 10 VLANs with 1355 native"
   vlan_settings {
     native_vlan   = 1355
-    allowed_vlans = "1355,1356"
+    allowed_vlans = "1355-1359"
     object_type   = "fabric.VlanSettings"
   }
   organization {
@@ -23,8 +23,8 @@ resource "intersight_fabric_eth_network_group_policy" "tenant10_native" {
 // The LAN Connectivity Policy is the parent policy that owns the vNIC set.
 // Each vNIC references this policy directly when it is created.
 resource "intersight_vnic_lan_connectivity_policy" "ue_two_nics" {
-  name            = "ue-lan-connectivity"
-  description     = "demo vnic lan connectivity policy"
+  name            = "ue-two-nics-tenant10"
+  description     = "A and B vnics with tenant 10 VLANs (1355 native)"
   placement_mode  = "auto"
   target_platform = "UnifiedEdgeServer"
 
