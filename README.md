@@ -1,3 +1,12 @@
+## How to run
+
+The Intersight provider requires that API key is provided at runtime. The easiest way is to set environment variables.
+
+```
+export INTERSIGHT_API_KEY=
+export INTERSIGHT_SECRET_KEY=
+```
+
 ## Requirements
 
 | Name | Version |
