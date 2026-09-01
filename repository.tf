@@ -88,10 +88,10 @@ resource "intersight_firmware_server_configuration_utility_distributable" "scu" 
     ignore_changes = [tags]
   }
 
-  name        = "SCU 7.1.7.260100"
+  name        = "SCU 7.1.7.260200"
   description = local.description
   vendor      = "Cisco"
-  nr_version  = "SCU 7.1.7.260100"
+  nr_version  = "SCU 7.1.7.260200"
   // Scope the SCU import to the Unified Edge compute model this repo targets.
   supported_models = ["UCSXE-130C-M8"]
 
@@ -103,7 +103,7 @@ resource "intersight_firmware_server_configuration_utility_distributable" "scu" 
   nr_source {
     additional_properties = jsonencode({
       IsPasswordSet = false
-      LocationLink  = "http://10.135.5.2/scu/ucsxe-scu-7.1.7.260100.iso"
+      LocationLink  = "http://10.135.5.2/scu/ucsxe-scu-7.1.7.260200.iso"
       Username      = ""
     })
     object_type = "softwarerepository.HttpServer"
