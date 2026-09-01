@@ -24,3 +24,8 @@ variable "local_user_password" {
   type        = string
   sensitive   = true
 }
+
+variable "vlans" {
+  type    = list(number)
+  default = [1355, 1356, 1357, 1358, 1359]
+}
