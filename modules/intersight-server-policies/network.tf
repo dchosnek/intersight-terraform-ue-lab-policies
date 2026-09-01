@@ -1,16 +1,21 @@
-// This VLAN group is shared by both server-facing vNICs.
-resource "intersight_fabric_eth_network_group_policy" "tenant10_native" {
-  name        = "tenant10-server-vlans"
-  description = "tenant 10 VLANs with 1355 native"
+// This array of VLAN groups is shared by both server-facing vNICs.
+resource "intersight_fabric_eth_network_group_policy" "tenant10_eng_array" {
+  for_each = toset([for vlan in var.vlans : tostring(vlan)])
+
+  name        = "tenant10-${each.value}-native"
+  description = "tenant 10 VLANs with ${each.value} as native"
+
   vlan_settings {
-    native_vlan   = 1355
+    native_vlan   = each.value
     allowed_vlans = "1355-1359"
     object_type   = "fabric.VlanSettings"
   }
+
   organization {
     object_type = "organization.Organization"
     moid        = var.org_moid
   }
+
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -24,7 +29,7 @@ resource "intersight_fabric_eth_network_group_policy" "tenant10_native" {
 // Each vNIC references this policy directly when it is created.
 resource "intersight_vnic_lan_connectivity_policy" "ue_two_nics" {
   name            = "ue-two-nics-tenant10"
-  description     = "A and B vnics with tenant 10 VLANs (1355 native)"
+  description     = "A and B vnics with tenant 10 VLANs (1356 native)"
   placement_mode  = "auto"
   target_platform = "UnifiedEdgeServer"
 
@@ -83,7 +88,7 @@ resource "intersight_vnic_eth_if" "interface_a" {
   }
 
   fabric_eth_network_group_policy {
-    moid        = intersight_fabric_eth_network_group_policy.tenant10_native.moid
+    moid        = intersight_fabric_eth_network_group_policy.tenant10_eng_array[1356].moid
     object_type = "fabric.EthNetworkGroupPolicy"
   }
 }
@@ -108,7 +113,7 @@ resource "intersight_vnic_eth_if" "interface_b" {
   }
 
   fabric_eth_network_group_policy {
-    moid        = intersight_fabric_eth_network_group_policy.tenant10_native.moid
+    moid        = intersight_fabric_eth_network_group_policy.tenant10_eng_array[1356].moid
     object_type = "fabric.EthNetworkGroupPolicy"
   }
 }
