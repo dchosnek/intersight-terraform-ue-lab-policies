@@ -10,32 +10,20 @@ resource "intersight_ippool_pool" "tenant10_management_1356" {
   }
 
   ip_v4_blocks {
-    from = "10.135.6.101"
-    to   = "10.135.6.108"
+    from = "10.135.6.20"
+    to   = "10.135.6.35"
   }
   ip_v4_blocks {
-    from = "10.135.6.109"
-    to   = "10.135.6.116"
+    from = "10.135.6.36"
+    to   = "10.135.6.51"
   }
   ip_v4_blocks {
-    from = "10.135.6.117"
-    to   = "10.135.6.124"
+    from = "10.135.6.52"
+    to   = "10.135.6.67"
   }
   ip_v4_blocks {
-    from = "10.135.6.125"
-    to   = "10.135.6.132"
-  }
-  ip_v4_blocks {
-    from = "10.135.6.133"
-    to   = "10.135.6.140"
-  }
-  ip_v4_blocks {
-    from = "10.135.6.141"
-    to   = "10.135.6.148"
-  }
-  ip_v4_blocks {
-    from = "10.135.6.149"
-    to   = "10.135.6.156"
+    from = "10.135.6.68"
+    to   = "10.135.6.85"
   }
 
   organization {
