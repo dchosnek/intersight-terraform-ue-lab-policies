@@ -3,7 +3,7 @@ locals {
   // Unified Edge server profile template.
   unified_edge_server_policy_bucket = [
     {
-      moid        = intersight_boot_precision_policy.ue_boot_order.moid
+      moid        = intersight_boot_precision_policy.ue_boot_secure.moid
       object_type = "boot.PrecisionPolicy"
     },
     {
