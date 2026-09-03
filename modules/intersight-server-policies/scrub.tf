@@ -16,3 +16,22 @@ resource "intersight_compute_scrub_policy" "bios_scrub" {
     }
   }
 }
+
+resource "intersight_compute_scrub_policy" "bios_and_disk_scrub" {
+  name          = "ue-bios-disk-scrub"
+  description   = "Scrubs both BIOS and disks"
+  scrub_targets = ["BIOS", "Disk"]
+
+  organization {
+    object_type = "organization.Organization"
+    moid        = var.org_moid
+  }
+
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
+}
