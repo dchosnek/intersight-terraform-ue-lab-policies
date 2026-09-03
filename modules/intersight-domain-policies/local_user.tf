@@ -8,6 +8,9 @@ resource "intersight_iam_end_point_user_policy" "local_user_policy" {
   name        = "ue-local-user-ecmc"
   description = "Local user policy for eCMC"
 
+  account_lockout_duration  = 0
+  account_lockout_threshold = 0
+
   password_properties {
     enforce_strong_password  = false
     enable_password_expiry   = false
